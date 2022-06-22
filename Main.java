@@ -2,9 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        System.out.println(calc(input));
+        System.out.println(calc(new Scanner(System.in).nextLine()));
     }
 
     static boolean isRoman(String num) {
@@ -73,7 +71,7 @@ public class Main {
         if (arrStr.length < 3)
             return "throws Exception //т.к. строка не является математической операцией";
 
-        if (arrStr[0].charAt(0) == '-' && arrStr[2].charAt(2) == '-')
+        if (arrStr[0].charAt(0) == '-' && arrStr[2].charAt(0) == '-')
             return "Данные числа пока не поддерживаются. Ждите обновлений";
 
         if (!isRoman(arrStr[0]) && isRoman(arrStr[2]) || isRoman(arrStr[0]) && !isRoman(arrStr[2]))
