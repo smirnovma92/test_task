@@ -32,20 +32,21 @@ public class Main {
         return result;
     }
 
-    static String intToRome(int num) {
-        if (num == 20) return "XX";
-        if (num == 19) return "XIX";
-        if (num == 9) return "IX";
-        if (num == 14) return "XIV";
-        if (num == 4) return "IV";
+    public static String romanBuild(int num, String d1, String d2, String d3) {
+        if (num == 5) return d2;
+        if (num == 9) return d1 + d3;
+        if (num == 4) return d1 + d2;
         String res = "";
-        if (num / 10 == 1) res = "X";
-        num %= 10;
-        if (num / 5 == 1)
-            res += "V";
-        num %= 5;
-        for (int i = 0; i < num; i++) res += "I";
+        if (num > 5) {
+            res += d2;
+            num %= 5;
+        }
+        for (int i = 0; i < num; i++) res += d1;
         return res;
+    }
+    public static String intToRome(int num) {
+        if (num == 100) return "C";
+        return romanBuild(num/10, "X", "L", "C") + romanBuild(num%10, "I", "L", "C");
     }
 
     static int initNums(String num) {
