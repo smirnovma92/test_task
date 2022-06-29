@@ -1,8 +1,18 @@
 import java.util.Scanner;
-
+/* Не вижу вариантов, как может получится результатом 0 в риских числах */
 public class Main {
     public static void main(String[] args) {
-        System.out.println(calc(new Scanner(System.in).nextLine()));
+        String s;
+        try {
+            s = calc(new Scanner(System.in).nextLine());
+            if (s.length() > 6)
+                throw new Exception(s);
+            System.out.println(s);
+        }
+        catch(Exception ex){
+
+            System.out.println(ex.getMessage());
+        }
     }
 
     static boolean isRoman(String num) {
@@ -102,7 +112,7 @@ public class Main {
         }
 
         if (isRoman(arrStr[0]))
-            if (resInt < 0)
+            if (resInt <= 0)
                 return "throws Exception //т.к. в римской системе нет отрицательных чисел";
             else
                 resStr = intToRome(resInt);
